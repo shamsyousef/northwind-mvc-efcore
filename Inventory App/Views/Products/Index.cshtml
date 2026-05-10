@@ -1,0 +1,78 @@
+@using System.Globalization
+@model IEnumerable<Inventory_App.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>All Of Products</h1>
+<p> <a asp-action="Create" class="btn btn-primary">Create New Product </a> </p>
+<div class="card shadow-lg border-0 rounded-4">
+<table class="table  table-hover align-middle mb-0">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantityPerUnit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier)
+            </th>
+
+            <th>
+                <label>Actions<label/>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantityPerUnit)
+            </td>
+            <td>
+                    @item.UnitPrice?.ToString("C", new CultureInfo(configuration["CultureSettings:DefaultCulture"]))
+                    </td>
+           
+            <td>
+                    @if (item.Category != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    }
+                    else
+                    {
+                        <label>No Category</label>
+                    }
+            </td>
+            <td>
+              @if(item.Supplier!=null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
+                    }
+                    else
+                    {
+                       <label>No Supplier</label>
+                    }
+            </td>
+            <td>
+                    <div class="d-flex justify-content-center gap-2">
+                        <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.ProductId"> Edit</a>
+                        <a class="btn btn-sm btn-outline-info" asp-action="Details" asp-route-id="@item.ProductId"> Details</a>
+                        <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@item.ProductId"> Delete</a>
+                    </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
