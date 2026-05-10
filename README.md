@@ -24,13 +24,6 @@ This project demonstrates how to scaffold an existing database into models and D
 
 ---
 
-## 🔍 Search & Filtering
-- Search products by name
-- Filter based on category (if implemented)
-- Simple query-based search functionality
-
----
-
 ## 🔗 Relationships Handling
 - Products ↔ Categories relationship
 - Proper foreign key navigation properties
@@ -47,9 +40,8 @@ This project demonstrates how to scaffold an existing database into models and D
 
 # 🛠️ Technologies Used
 
-- :contentReference[oaicite:1]{index=1} (.NET 10)
-- :contentReference[oaicite:2]{index=2}
-- :contentReference[oaicite:3]{index=3} (Northwind DB)
+-.NET 10
+- Northwind DB
 - C#
 - Bootstrap 5
 - Razor Views
